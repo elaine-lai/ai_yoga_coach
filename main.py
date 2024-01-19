@@ -1,12 +1,15 @@
 import time
 import cv2
 import joblib
+import pyttsx3
 import numpy as np
 import tensorflow as tf
-# import utils as utils
 from utils import check_threshold, draw_edges, draw_keypoints, process_keypoints_to_angles, predict_class
 from constants import KEYPOINT_EDGE_INDS_TO_COLOR
 from feedback import evaluatePose
+
+# text to speech library
+text_speech = pyttsx3.init()
 
 model_path = 'model/3.tflite'
 interpreter = tf.lite.Interpreter(model_path=model_path)
@@ -67,6 +70,8 @@ while cap.isOpened():
             predicted_label = model_probabilities['True Label'].iloc[0]  # gets the predicted model label
             feedback, feedback_reasons = evaluatePose(predicted_label, angles, trimmed_keypoints_with_scores)
         else:
+            text_speech.say("Not enough keypoints, please make sure your whole body is in frame!")
+            text_speech.runAndWait()
             print("====================================")
             print("Not enough keypoints, please make sure you are in frame!")
             print("====================================\n")
