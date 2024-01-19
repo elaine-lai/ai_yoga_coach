@@ -10,6 +10,9 @@ from feedback import evaluatePose
 
 # text to speech library
 text_speech = pyttsx3.init()
+# default is 200 words per min
+newVoiceRate = 250
+text_speech.setProperty('rate',newVoiceRate)
 
 model_path = 'model/3.tflite'
 interpreter = tf.lite.Interpreter(model_path=model_path)
@@ -69,11 +72,14 @@ while cap.isOpened():
             model_probabilities = predict_class(model, angles)  # gives a dataframe with all probabilities
             predicted_label = model_probabilities['True Label'].iloc[0]  # gets the predicted model label
             feedback, feedback_reasons = evaluatePose(predicted_label, angles, trimmed_keypoints_with_scores)
+            for fb in feedback:
+                text_speech.say(fb)
+                text_speech.runAndWait()
         else:
             text_speech.say("Not enough keypoints, please make sure your whole body is in frame!")
             text_speech.runAndWait()
             print("====================================")
-            print("Not enough keypoints, please make sure you are in frame!")
+            print("Not enough keypoints, please make sure your whole body is in frame!q")
             print("====================================\n")
         start_time = time.time()
 
