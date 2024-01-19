@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import utils as utils
-from constants import KEYPOINT_DICT, KEYPOINT_EDGE_INDS_TO_COLOR
+from utils.constants import KEYPOINT_EDGE_INDS_TO_COLOR
 
 model_path = 'model/3.tflite'
 interpreter = tf.lite.Interpreter(model_path=model_path)
