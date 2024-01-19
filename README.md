@@ -1,5 +1,7 @@
 # ai_yoga_coach
 
+AI Yoga is an application employing machine learning to identify and offer feedback on five different yoga poses.
+
 
 ### Tools
 
