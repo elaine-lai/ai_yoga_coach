@@ -7,7 +7,7 @@ Our goal was to develop an application that enables individuals to engage in yog
 ![yoga_tree](https://github.com/elaine-lai/ai_yoga_coach/assets/90720708/8b1bd28d-580a-49a2-80e4-f32533dc7f02)
 
 We had also deployed a version that was compatible with an edge computing device, the Jetson Nano. 
-The animated image above captures the model in action on the Jetson Nano.
+The animated gif above captures the model in action on the Jetson Nano.
 
 ![jetsonnano500](https://github.com/elaine-lai/ai_yoga_coach/assets/90720708/24b9260e-a92e-4645-9e39-7d1194b2201d)
 
